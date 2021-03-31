@@ -1,0 +1,7 @@
+dist
+.idea
+node_modules
+mongo-volume
+server/node_modules
+nextjs-blog/node_modules
+*.tgz
