@@ -1,17 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const jwt = require('jsonwebtoken');
+const validateToken = require('./validateToken');
 
 router.use('/', async (req, res, next) => {
     try {
-        const validToken = jwt.verify(req.headers.authorization, process.env.jwt_keyword)
-        if (validToken && validToken.id && validToken) {
-            next()
+        const valid = await validateToken(req, res, next);
+        if (valid) {
+            res.status(200).send({message: 'Login válido'})
         } else {
-            res.status(400).send('Precisa de autenticação!');
+            res.status(400).send({message: 'Login não é válido!'});
         }
     } catch (e) {
-        res.status(401).send(e)
+        res.status(401).send({code: 401, message: 'Precisa de autenticação!'})
     }
 });
 

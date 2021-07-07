@@ -2,19 +2,19 @@ version: '3'
 
 services:
 
-  nodejs:
-    build: 
-      context: .
-      dockerfile: ./node/Dockerfile
-    container_name: nodejs
-    volumes:
-      - ./server:/usr/app/server
-    ports:
-      - "3009:3009"
-    command: npm run up --prefix server/
-    networks:
-      mongodb-connection:
-        ipv4_address: 172.22.0.107
+#  nodejs:
+#    build:
+#      context: .
+#      dockerfile: ./node/Dockerfile
+#    container_name: nodejs
+#    volumes:
+#      - ./server:/usr/app/server
+#    ports:
+#      - "3009:3009"
+#    command: npm run up --prefix server/
+#    networks:
+#      mongodb-connection:
+#        ipv4_address: 172.22.0.107
         
   mongo:
     image: mongo
